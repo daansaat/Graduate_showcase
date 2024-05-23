@@ -1,6 +1,7 @@
 import React from 'react';
-import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import { useState } from 'react';
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
+import { SocialIcon } from 'react-social-icons';
 import './styles.css';
 
 function FloorMap() {
@@ -11,9 +12,38 @@ function FloorMap() {
                     <TransformComponent>
                         <div className="floor-map-wrapper">
                             <img src="/floor_map.jpg" className="floor-map-image" alt="Floor Map" />
-                            <Student number={1} top={30} left={10} zoomToElement={zoomToElement} resetTransform={resetTransform} />
-                            <Student number={2} top={35} left={91} zoomToElement={zoomToElement} resetTransform={resetTransform} />
-                            <Student number={3} top={63} left={44} zoomToElement={zoomToElement} resetTransform={resetTransform} />
+                            <Student 
+                                number={1} 
+                                top={30} 
+                                left={10} 
+                                name='Marcus Absi'
+                                portrait='/mabsi.portrait.jpg'
+                                artwork='/mabsi.artwork.jpg'
+                                social='https://www.instagram.com/corabsi911/?hl=en'
+                                zoomToElement={zoomToElement} 
+                                resetTransform={resetTransform} 
+                            />
+                            <Student 
+                                number={2} 
+                                top={35} 
+                                left={91} 
+                                name='A. Twatty'
+                                portrait='/twat.portrait.jpg'
+                                artwork='/twat.artwork.jpg'
+                                social='https://www.instagram.com/explore/tags/corbasi/?hl=en'
+                                zoomToElement={zoomToElement} 
+                                resetTransform={resetTransform}
+                            />
+                            <Student 
+                                number={3} 
+                                top={63} 
+                                left={44}
+                                name='Anonymous'
+                                portrait='/portrait.jpg'
+                                artwork='/artwork.jpg'
+                                zoomToElement={zoomToElement} 
+                                resetTransform={resetTransform} 
+                            />
                         </div>
                     </TransformComponent>
                 )}
@@ -22,7 +52,7 @@ function FloorMap() {
     );
 }
 
-function Student({ number, top, left, zoomToElement, resetTransform }) {
+function Student({ number, top, left, name, portrait, artwork, social, zoomToElement, resetTransform }) {
     const [isHovered, setIsHovered] = useState(false);
 
     const handleMouseEnter = () => {
@@ -49,10 +79,15 @@ function Student({ number, top, left, zoomToElement, resetTransform }) {
         >
             {isHovered ? (
                 <div className="info-box">
-                    <img src="/path_to_image.jpg" alt="Student" className="info-box-image" />
-                    <div className="info-box-text">
-                        <p>Student name</p>
-                        <p>Additional information about the student goes here.</p>
+                    <div className='left-column'> 
+                        <img src={portrait} alt="Portrait" className="portrait-image" />
+                        <div className="info-box-text">
+                            {name}
+                        </div>
+                        <SocialIcon className="social-icon" url={social} style={{ height: '1vw', width: '1vw'}}/>
+                    </div>
+                    <div className='right-column'>
+                        <img src={artwork} alt="Artwork" className="artwork-image" />
                     </div>
                 </div>
             ) : (

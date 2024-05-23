@@ -1,16 +1,23 @@
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .floor-map-container {
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center;     /* Center vertically */
-    height: 100vh;           /* Make the container take up full viewport height */
-    width: 100vw;             /* Full width of the parent container */
-    /* margin: 0 auto; */
-    /* overflow: visible; */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
 
 .floor-map-wrapper {
@@ -21,25 +28,43 @@ code {
 
 .floor-map-image {
     width: 100%;
-    /* width: 100%; */
     height: auto;
-    /* overflow: visible; */
-    /* display: block; */
-    /* width: 90%;  Make the image take up 90% of its container's width */
-    /* height: 90%; Make the image take up 90% of its container's height */
     /* object-fit: contain; Ensure the image scales correctly within its container */
 }
-
-/* src/components/Student.css */
 
 .student-container {
     position: absolute;
     transform: translate(-50%, -50%);
-    cursor: pointer; /* Change cursor to pointer on hover */
-    overflow: visible;
+    /* cursor: pointer; Change cursor to pointer on hover */
+    /* overflow: visible; */
 }
 
+/* @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.3);
+    }
+    100% {
+      transform: scale(1);
+    }
+  } */
+
+  /* @keyframes rotating-border {
+    0% {
+      border-color: transparent;
+    }
+    50% {
+      border-color: blue;
+    }
+    100% {
+      border-color: transparent;
+    }
+  } */
+
 .student {
+    /* animation: pulse 2s infinite; */
     width: 5vw; /* Size of the circle relative to the parent container's width */
     aspect-ratio: 1 / 1; /* Ensures the height is always equal to the width */
     background-color: red;
@@ -49,55 +74,96 @@ code {
     justify-content: center;
     align-items: center;
     font-size: 2.5vw; /* Font size relative to the viewport width */
+
+    /* border: 3px solid;
+    border-image: linear-gradient(90deg, transparent, blue, transparent);
+    border-image-slice: 1;
+    animation: rotate 2s linear infinite; */
+
+    /* position: relative; */
+    /* border: 2px solid transparent; */
+    /* animation: rotating-border 2s infinite linear; */
+
+    /* position: relative;
+    overflow: hidden; */
+
 }
 
+.student:before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    /* border-top: 3px solid blue; */
+    border-right: 3px solid rgb(255, 255, 255);
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+/* @keyframes rotate {
+    to {
+        transform: rotate(1turn);
+    }
+} */
+
+/* .student:before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid blue;
+    border-radius: 50%;
+    animation: rotating-border 2s infinite reverse linear;
+} */
+
 .info-box {
-    /* right: 150px; */
+    display: flex;
+    /* flex-wrap: wrap; */
     width: 15vw; 
     height: 25vh;
-    /* width: 200px; Set a fixed width for the info box */
-    padding: 1vw;
+    padding: .5vw;
     background-color: white;
     box-shadow: 0 0 1vw rgba(245, 245, 220, 0.5)
 }
 
-.info-box-image {
+.left-column {
+    flex: 2;
+    margin-right: .25vw;
+}
+
+.right-column {
+    flex: 6;
+}
+
+.portrait-image {
     width: 100%;
-    height: auto;
-    border-radius: 5px;
+    aspect-ratio: 1 / 1.2;
+    object-fit: cover;
+}
+
+.artwork-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .info-box-text {
-    margin-top: 10px;
+    font-size: .6vw;
+    font-weight: bold;
 }
 
-.info-box-text p {
-    margin: 5px 0;
+.social-icon {
+    width: 10px;
+    height: 10px;
 }
-
-
-/* .student {
-    position: absolute;
-    width: 5%; 
-    aspect-ratio: 1 / 1;
-    background-color: red;
-    border-radius: 50%;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5vw; 
-    transform: translate(-50%, -50%);
-} */
-
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-
-  
